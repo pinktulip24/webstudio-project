@@ -1,0 +1,129 @@
+/*formularul din modal*/
+
+.modal {
+  &__form-service {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    position: relative;
+    height: var(--height-max);
+    bottom: 0;
+    &__title {
+      @include flex_rule;
+      flex-wrap: nowrap;
+      font-weight: var(--fontweight-bold);
+      letter-spacing: var(--letterspacing);
+      font-size: var(--fontsize-medium);
+      line-height: 23px;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    label {
+      display: block;
+      position: relative;
+      font-style: normal;
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: 0.01em;
+      color: var(--secondary-color);
+      margin-top: 10px;
+    }
+    &__btn {
+      @include flex_rule;
+      @include centerFlex;
+      margin-left: auto;
+      margin-right: auto;
+      height: 50px;
+      cursor: pointer;
+      @include blue_button;
+      min-width: 200px;
+      letter-spacing: var(--letterspacingH);
+      color: var(--white-color);
+    }
+    &__input {
+      height: 40px;
+      width: var(--width-max);
+      padding: 12px 42px;
+      outline: none;
+      @extend %inputForm;
+      &:focus {
+        @extend %focusForm;
+        & + .modal__form-service__form-icon {
+          @include transition(fill);
+          fill: var(--blue-color);
+        }
+      }
+    }
+    &__message {
+      @extend %inputForm;
+      display: block;
+      position: relative;
+      height: 120px;
+      resize: none;
+      margin-bottom: 10px;
+      padding: 12px 16px;
+      outline: none;
+      &:focus {
+        @extend %focusForm;
+      }
+      &::placeholder {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.01em;
+        color: rgba(117, 117, 117, 0.5);
+      }
+    }
+    &__form-icon {
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      left: 15px;
+      top: 70%;
+      transform: translateY(-70%);
+      white-space: nowrap;
+      fill: var(--primary-color);
+    }
+    &__checkbox {
+      &-terms {
+        margin-bottom: 28px;
+        cursor: pointer;
+        @extend %flexForm;
+        font-size: 14px;
+        line-height: 1.71;
+        letter-spacing: var(--letterspacing);
+        color: var(--secondary-color);
+        a {
+          color: var(--blue-color);
+        }
+      }
+      &-replace {
+        @extend %flexForm;
+        margin-right: 7px;
+        &__svg {
+          width: 16px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}
+input[type="checkbox"] {
+  display: none;
+  &:checked {
+    & + .modal__form-service__checkbox-replace {
+      background-color: var(--blue-color);
+      fill: var(--blue-color);
+      #check_img {
+        opacity: 1;
+      }
+    }
+  }
+}
+#check_square {
+  position: absolute;
+}
+#check_img {
+  padding: 3px;
+  position: relative;
+  opacity: 0;
+}

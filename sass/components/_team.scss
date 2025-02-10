@@ -1,0 +1,117 @@
+.team {
+  display: flex;
+  @include centerFlex;
+  background-color: var(--grayBlue-color);
+  letter-spacing: var(--letterspacing);
+  font-size: 16px;
+  text-align: center;
+  line-height: 33px;
+  padding: var(--padding-general-mobile) 0;
+  &__title {
+    padding-bottom: 30px;
+    font-size: 28px;
+  }
+  &__list {
+    @include flex_rule_mobile;
+    justify-content: center;
+    gap: var(--gap-primary);
+    margin: 0;
+    &__item {
+      background-color: var(--white-color);
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+      border-radius: 0px 0px 4px 4px;
+      @include nrCol(4, 30);
+
+      &__img {
+        display: block;
+        margin: 0 auto;
+        @extend %maxWidth;
+      }
+      &__description {
+        padding-top: 30px;
+        padding-bottom: 24px;
+        &__name {
+          font-weight: 500;
+          margin-bottom: 10px;
+          color: var(--primary-color);
+        }
+        &__job {
+          margin-top: 0;
+          line-height: 1.18;
+          color: var(--secondary-color);
+        }
+      }
+    }
+  }
+  &__social-list {
+    @extend %teamSocialList;
+    &__link {
+      @extend %teamSocialLink;
+      background-color: rgba(255, 255, 255, 0.1);
+      &:hover,
+      &:focus {
+        @include transition(border-radius, background-color, fill);
+        border-radius: var(--border-radius);
+        background-color: var(--blue-color);
+        fill: var(--white-color);
+      }
+      &--footer {
+        @extend %teamSocialLink;
+        border-radius: var(--border-radius);
+      }
+      &__icon {
+        @extend %teamSocialIcon;
+        &--footer {
+          @extend %teamSocialIcon;
+          fill: var(--white-color);
+        }
+      }
+    }
+  }
+  &--footer {
+    @extend %teamSocialList;
+    padding-top: 0;
+  }
+}
+
+.social-list {
+  @include flex_rule;
+  flex-wrap: nowrap;
+  @include centerFlex;
+  margin: 0;
+  gap: 10px;
+  max-width: var(--width-max);
+  margin: 0 auto;
+  &--footer {
+    gap: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .team {
+    flex-basis: 768px;
+    &__list {
+      @include flex_rule;
+      flex-wrap: wrap;
+      &__item {
+        @include nrCol(2, 30);
+      }
+    }
+  }
+  .social-list {
+    justify-content: center; 
+    max-width: 85%;
+  }
+}
+@media (min-width: 1200px) {
+  .team {
+    flex-basis: 1200px;
+    padding: var(--padding-general) 0;
+    &__list {
+      &__item {
+        @include nrCol(4, 30);
+      }
+    }
+  }
+}

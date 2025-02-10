@@ -1,0 +1,103 @@
+/*description and WhatWeDo*/
+
+.description {
+  display: flex;
+  @extend %bgGray;
+  &__subtitle {
+    color: var(--primary-color);
+    font-weight: var(--fontweight-bold);
+    letter-spacing: var(--letterspacing);
+    text-transform: var(--text-transformUpper);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    @extend %maxWidth;
+  }
+  &__text {
+    color: var(--secondary-color);
+    letter-spacing: var(--letterspacing);
+    line-height: 1.71;
+    @extend %maxWidth;
+  }
+  &__list {
+    @include flex_rule_mobile;
+    justify-content: center;
+    gap: var(--gap-primary);
+    margin: 0;
+    padding: var(--padding-general-mobile) 0;
+    &__item {
+      @include nrCol(4, 30);
+      &__img {
+        display: block;
+        margin: 0 auto;
+        @extend %maxWidth;
+        background-color: var(--grayBlue-color);
+        border-radius: var(--border-radius4);
+      }
+    }
+  }
+}
+.whatWeDo__list,
+.description .container__title {
+  display: none;
+}
+.whatWeDo__list {
+  @extend %main_list;
+  &__img {
+    @include nrCol(3, 30);
+    position: relative;
+    width: var(--width-max);
+    object-fit: cover;
+  }
+  &__title {
+    @include main_text;
+    text-transform: var(--text-transformUpper);
+    width: var(--width-max);
+    font-weight: var(--fontweight-bold);
+    font-style: normal;
+    line-height: 16px;
+    background-color: rgba(47, 48, 58, 0.8);
+    padding: 27px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+@media (min-width: 768px) {
+  .description {
+    flex-basis: 768px;
+    &__subtitle {
+      text-align: left;
+    }
+    &__list {
+      @include flex_rule;
+      flex-wrap: wrap;
+      &__item {
+        @include nrCol(2, 30);
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .description {
+    flex-basis: 1200px;
+    &__subtitle {
+      text-align: left;
+    }
+    &__list {
+      padding: var(--padding-general) 0;
+      &__item {
+        @include nrCol(4, 30);
+      }
+    }
+    & .container__title {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .whatWeDo__list {
+    display: flex;
+    justify-content: center;
+  }
+}

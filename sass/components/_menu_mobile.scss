@@ -1,0 +1,112 @@
+.menu-toggle {
+  display: flex;
+  @include centerFlex;
+  border-radius: var(--border-radius);
+  min-height: 40px;
+  min-width: 40px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  order: 3;
+  &:hover,
+  &:focus {
+    color: var(--blue-color);
+  }
+}
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+.menu-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  background-color: var(--white-color);
+  @include flex_rule_mobile;
+  justify-content: space-between;
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform 250ms ease-in-out;
+  overflow: hidden;
+  &.is-open {
+    transform: translateX(0);
+  }
+  & .menu-toggle {
+    position: absolute;
+    top: 16px;
+    right: 40px;
+    color: var(--black-color);
+
+    &:hover,
+    &:focus {
+      color: var(--blue-color);
+    }
+  }
+}
+
+.mobile-menu {
+  @include flex_rule_mobile;
+  gap: 25px;  
+  // padding-top: 1rem;
+  & .menu__item {
+    color: var(--primary-color);
+    @extend %mobileFont;
+    font-size: 22px;
+    line-height: 27px;
+    &__link:hover,
+    &__link:focus {
+      color: var(--blue-color);
+    }
+  }
+  & .header__contact__item {
+    @extend %mobileFont;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--secondary-color);
+    &__link:hover,
+    &__link:focus {
+      @extend %mobileLink;
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
+  & .menu__item__social {
+    @extend %mobileFont;
+    font-size: 14px;
+    position: relative;
+    &:not(:last-child)::after {
+      content: "|";
+      position: absolute;
+      padding-left: 10px;
+      color: var(--primary-color);
+    }
+    &__link {
+      @extend %mobileLink;
+    }
+  }
+  & .menu__list{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: absolute;
+    top: 50px;
+  }
+}
+.horizontal_list {
+  @include flex_rule;
+  gap: 20px;
+}
+.contact_margin {
+  position: absolute;
+  bottom: 120px;
+  display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

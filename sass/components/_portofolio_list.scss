@@ -1,0 +1,101 @@
+/*portofolio-list*/
+
+.portofolio {
+  display: flex;
+  &__list {
+    @include flex_rule_mobile;
+    gap: var(--gap-primary);
+    padding-top: 40px;
+    padding-bottom: var(--padding-general-mobile);
+    &__item {
+      @include centerFlex;
+      @include transition(box-shadow, border);
+      @include nrCol(3, 30);
+      background-color: var(--white-color);
+      border: 1px solid var(--gray-color3);
+      flex-grow: 0;
+      flex-shrink: 1;
+      cursor: pointer;
+      @include transition(box-shadow, border);
+      &:hover,
+      &:focus {
+        border: 1px solid var(--gray-color3);
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+          0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+      }
+      &:hover .portofolio__list__item__overlay {
+        opacity: 0.9;
+        transform: translateY(0);
+      }
+      &__description {
+        padding: 20px 24px;
+        &_name {
+          letter-spacing: var(--letterspacingH);
+          color: var(--primary-color);
+          font-weight: var(--fontweight-bold);
+          font-size: var(--fontsize-medium);
+          line-height: 2;
+          margin-bottom: 4px;
+        }
+        &__text {
+          font-size: 16px;
+          line-height: 1.87;
+          letter-spacing: var(--letterspacing);
+          color: var(--secondary-color);
+        }
+      }
+      &__img {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        @extend %maxWidth;
+        & img {
+          margin: 0 auto;
+        }
+      }
+      &__overlay {
+        background-color: var(--blue-color);
+        opacity: 0.9;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        @include transition(transform);
+      }
+      &__text {
+        color: var(--white-color);
+        letter-spacing: var(--letterspacing);
+        font-size: var(--fontsize-medium);
+        line-height: 1.5em;
+        position: absolute;
+        padding: 63px 24px 91px 24px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .portofolio {
+    flex-basis: 768px;
+    &__list {
+      @include flex_rule;
+      flex-wrap: wrap;
+      &__item {
+        @include nrCol(2, 30);
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .portofolio {
+    flex-basis: 1200px;
+    &__list {
+      padding-bottom: var(--padding-general);
+      &__item {
+        @include nrCol(3, 30);
+      }
+    }
+  }
+}

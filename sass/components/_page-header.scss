@@ -1,0 +1,115 @@
+/*HEADER*/
+.header {
+  display: flex;
+  @include header_section;
+  justify-content: center;
+  align-items: center;
+  &__logo {
+    display: flex;
+    order: 1;
+    margin-right: auto;
+    h2 {
+      @extend %logo_title;
+    }
+    span {
+      color: var(--black-color);
+    }
+  }
+}
+
+/*NAVBAR*/
+.menu {
+  @include flex_rule_mobile;
+  &__item__link {
+    font-weight: var(--fontweight-second);
+    color: var(--primary-color);
+  }
+}
+
+/*HEADER CONTACT*/
+.header__contact {
+  &__item {
+    &:hover {
+      @include animation("animateContact 250ms 1");
+    }
+    &__link {
+      color: var(--secondary-color);
+      cursor: pointer;
+      font-weight: var(--fontweight-second);
+      display: flex;
+      &:hover,
+      &:active,
+      &:focus {
+        color: var(--blue-color);
+        stroke: var(--blue-color);
+        fill: var(--blue-color);
+      }
+    }
+  }
+}
+.icon-mail,
+.icon-phone {
+  @extend %contact_icon;
+}
+
+@media (max-width: 768px) {
+  .menu,
+  .header__contact {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    &__logo {
+      order: initial;
+      margin-right: 0;
+      padding-right: 0;
+    }
+    &__contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 21px 15px;
+      margin-left: auto;
+    }
+    .menu {
+      &__item__link {
+        padding: 28px 0;
+      }
+    }
+  }
+  .menu {
+    @include flex_rule;
+    @include centerFlex;
+    gap: 50px;
+    &__item__link {
+      padding: 32px 0;
+      position: relative;
+      &--selected:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-bottom: 4px solid var(--blue-color);
+        border-radius: 2px;
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        color: var(--blue-color);
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .header {
+    &__contact {
+      @include flex_rule;
+    }
+    &__contact {
+      gap: 40px;
+    }
+  }
+}
