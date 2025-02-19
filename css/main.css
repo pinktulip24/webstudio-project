@@ -249,6 +249,7 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
   max-height: 600px;
+  max-width: 100%;
   background-position: top center;
 }
 

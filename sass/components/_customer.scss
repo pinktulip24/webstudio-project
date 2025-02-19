@@ -7,7 +7,7 @@
   @extend %bgGray;
   padding: var(--padding-general-mobile) 0;
   &__list {
-    width: 450px;
+    width: auto;
     @include flex_rule;
     justify-content: center;
     flex-wrap: wrap;
@@ -18,7 +18,7 @@
      flex-grow:0;
     }
     &__item__img {
-      width: 170px;
+      width: 150px;
       height: 92px;
       border: 1px solid var(--lightgray-color);
       border-radius: var(--border-radius4);

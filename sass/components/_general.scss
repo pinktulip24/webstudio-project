@@ -10,6 +10,8 @@
 ::before,
 ::after {
   box-sizing: border-box;
+  margin:0;
+  padding:0;
 }
 body {
   font-family: var(--primary-font);
@@ -19,7 +21,7 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--primary-color);
-  background-color: var(--white-color);
+  background-color: var(--white-color); 
 }
 
 img {
@@ -29,7 +31,7 @@ img {
 }
 .container {
   //max-width:480px;
-  max-width: 1200px;
+  // max-width: 1200px;
   padding-left: 15px;
   padding-right: 15px;
   width: var(--width-max);
